@@ -4,3 +4,9 @@ Driver/build/
 Driver/*.xcodeproj/
 xcuserdata/
 .DS_Store
+Windows/**/bin/
+Windows/**/obj/
+Windows/publish/
+Windows/installer/output/
+Windows/installer/vendor/
+*.user

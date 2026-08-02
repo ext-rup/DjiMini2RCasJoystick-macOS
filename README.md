@@ -174,6 +174,13 @@ sudo python3 main.py -p /dev/ttyACM0
 The RC is placed in simulator mode and appears as `/dev/js0`. If several ACM
 devices are connected, inspect `/dev/ttyACM*` and pass the appropriate path.
 
+## Windows
+
+The Windows port is a .NET 8 notification-area application that automatically
+connects to the DJI USB serial interface and feeds a DirectInput controller
+through vJoy. See [`Windows/README.md`](Windows/README.md) for vJoy setup,
+building, diagnostics, and simulator mapping.
+
 ## Credits
 
 The controller protocol was inspired by
