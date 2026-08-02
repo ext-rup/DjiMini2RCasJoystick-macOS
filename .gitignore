@@ -1,0 +1,6 @@
+.build/
+.swiftpm/
+Driver/build/
+Driver/*.xcodeproj/
+xcuserdata/
+.DS_Store

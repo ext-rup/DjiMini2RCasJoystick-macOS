@@ -1,0 +1,44 @@
+name: DjiRCVirtualJoystick
+options:
+  bundleIdPrefix: io.github.ext-rup.dji-mini2-joystick
+  deploymentTarget:
+    macOS: "13.0"
+
+targets:
+  DjiRCVirtualJoystickDriver:
+    type: driver-extension
+    platform: macOS
+    sources:
+      - path: Dext
+        excludes: ["Info.plist"]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.ext-rup.dji-mini2-joystick.driver
+        PRODUCT_NAME: io.github.ext-rup.dji-mini2-joystick.driver
+        INFOPLIST_FILE: Dext/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Dext/Dext.entitlements
+        SDKROOT: driverkit
+        DRIVERKIT_DEPLOYMENT_TARGET: "22.0"
+        CODE_SIGN_STYLE: Automatic
+        CLANG_CXX_LANGUAGE_STANDARD: gnu++17
+    dependencies:
+      - sdk: HIDDriverKit.framework
+
+  DjiRCVirtualJoystick:
+    type: application
+    platform: macOS
+    sources:
+      - HostApp
+      - ../Sources/DJIProtocol
+      - ../Sources/DjiRCJoystick/SerialPort.swift
+      - ../Sources/DjiRCJoystick/VirtualPadClient.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.ext-rup.dji-mini2-joystick.host
+        CODE_SIGN_ENTITLEMENTS: HostApp/HostApp.entitlements
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_HARDENED_RUNTIME: true
+    dependencies:
+      - target: DjiRCVirtualJoystickDriver
+        embed: true
+        codeSign: true

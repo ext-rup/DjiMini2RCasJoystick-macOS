@@ -1,0 +1,14 @@
+#ifndef DjiRCVirtualJoystickRoot_h
+#define DjiRCVirtualJoystickRoot_h
+
+#include <Availability.h>
+#include <DriverKit/IOService.iig>
+
+class DjiRCVirtualJoystickRoot: public IOService
+{
+public:
+    virtual kern_return_t Start(IOService * provider) override;
+    virtual kern_return_t Stop(IOService * provider) override;
+};
+
+#endif
